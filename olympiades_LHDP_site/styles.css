@@ -1,0 +1,586 @@
+/* ===== Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-size: cover;
+  background-color: #ffffff;
+  color: #000000;
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Calque image de fond avec transparence */
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('images/background.jpg') no-repeat center center / cover;
+  opacity: 0.1; /* ajuste la transparence ici */
+  z-index: -1;
+  pointer-events: none; /* pour éviter de bloquer les clics */
+}
+
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem 0;
+}
+
+/* ===== Header ===== */
+.header {
+  background: linear-gradient(to right, #4e54c8, #8f94fb);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  animation: fadeDown 1s ease;
+}
+
+@keyframes fadeDown {
+  0% { transform: translateY(-20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  animation: fadeIn 1s ease forwards;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #ffeb3b;
+}
+
+/* ===== Bouton Dark Mode ===== */
+#darkModeToggle {
+  font-size: 1.2rem;
+  background: #ddd;
+  border: none;
+  border-radius: 50%;
+  padding: 0.5rem 0.7rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#darkModeToggle:hover {
+  background: #bbb;
+}
+
+/* ===== Main Content ===== */
+main {
+  flex: 1;
+}
+
+.main-content h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.intro-section {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeIn 1.5s ease;
+}
+
+.intro-section p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: auto;
+  color: #555;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card commune */
+.card {
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: #000;
+  animation: fadeInUp 1s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Podium Cards ===== */
+/* Ajout des couleurs spécifiques pour les podiums bronze, argent, or */
+.gold {
+  background: linear-gradient(135deg, #fbd85d, #f0c420);
+  color: #3a2e00;
+  font-weight: bold;
+}
+
+.silver {
+  background: linear-gradient(135deg, #cfcfcf, #bfbfbf);
+  color: #3a3a3a;
+  font-weight: bold;
+}
+
+.bronze {
+  background: linear-gradient(135deg, #cd7f32, #b87333);
+  color: #2e1f00;
+  font-weight: bold;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+animation-fill-mode: forwards;
+
+.card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Ajout d'un délai en cascade */
+.card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.card:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+
+/* ===== Tableau des scores ===== */
+/* Garder style léger, bord arrondi et ombre subtile comme dans les cards */
+
+.score-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px; /* espace vertical entre les lignes */
+  background: transparent;
+  color: #000;
+}
+
+.score-table th, .score-table td {
+  padding: 1rem;
+  text-align: center;
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border: none;
+}
+
+.score-table th {
+  background: linear-gradient(to right, #8f94fb, #4e54c8);
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.score-table tbody tr:hover td {
+  background: linear-gradient(to right, #b0bffc, #a3afe7);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  color: #333;
+  margin-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+  animation: fadeIn 1.5s ease;
+}
+
+/* ===== Dark Mode ===== */
+body.dark-mode {
+  background-color: #0e0e1a;
+  color: #e0e0ff;
+}
+
+body.dark-mode .header {
+  background: linear-gradient(to right, #2c3e50, #4ca1af);
+}
+
+body.dark-mode footer {
+  background: #1e1e2f;
+  color: #ccc;
+}
+
+body.dark-mode .nav-link {
+  color: #e0e0ff;
+}
+
+body.dark-mode .nav-link:hover {
+  background-color: #34495e;
+}
+
+body.dark-mode .card {
+  background: linear-gradient(to right, #2b5876, #4e4376);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .card:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .score-table table {
+  background: transparent;
+  color: #fff;
+}
+
+body.dark-mode .score-table th {
+  background: linear-gradient(to right, #3a4a66, #2a3a56);
+  color: #ddeeff;
+}
+
+body.dark-mode .score-table td {
+  background: linear-gradient(to right, #253146, #1a2232);
+  color: #ddeeff;
+  box-shadow: none;
+}
+
+body.dark-mode #darkModeToggle {
+  background: #444;
+  color: white;
+}
+
+body.dark-mode #darkModeToggle:hover {
+  background: #666;
+}
+
+/* Podium Cards (scores.html) */
+.podium-section {
+  margin: 2rem 0;
+}
+
+.podium-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: inherit; /* conserve couleur texte selon mode */
+  animation: fadeIn 1.2s ease forwards;
+}
+
+#podium-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+#podium-cards .card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  color: #000;
+  animation: fadeInUp 1s ease;
+}
+
+#podium-cards .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+#podium-cards .card h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* Couleurs du podium */
+#podium-cards .gold {
+  background: linear-gradient(135deg, #fbd85d, #f0c420);
+  color: #2c2c00;
+  box-shadow: 0 6px 14px rgba(247, 209, 64, 0.6);
+}
+
+#podium-cards .silver {
+  background: linear-gradient(135deg, #cfcfcf, #bfbfbf);
+  color: #3a3a3a;
+  box-shadow: 0 6px 14px rgba(192, 192, 192, 0.6);
+}
+
+#podium-cards .bronze {
+  background: linear-gradient(135deg, #cd7f32, #b87333);
+  color: #3f2200;
+  box-shadow: 0 6px 14px rgba(184, 115, 51, 0.6);
+}
+
+/* Dark Mode adjustments for podium cards */
+body.dark-mode #podium-cards .card {
+  background: linear-gradient(to right, #2b5876, #4e4376);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+body.dark-mode #podium-cards .gold {
+  background: linear-gradient(135deg, #fbd85d, #f0c420);
+  color: #2c2c00;
+  box-shadow: 0 6px 14px rgba(247, 209, 64, 0.8);
+}
+
+body.dark-mode #podium-cards .silver {
+  background: linear-gradient(135deg, #cfcfcf, #bfbfbf);
+  color: #3a3a3a;
+  box-shadow: 0 6px 14px rgba(192, 192, 192, 0.8);
+}
+
+body.dark-mode #podium-cards .bronze {
+  background: linear-gradient(135deg, #cd7f32, #b87333);
+  color: #3f2200;
+  box-shadow: 0 6px 14px rgba(184, 115, 51, 0.8);
+}
+
+/* ===== Cards avec image en haut et bouton ===== */
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: #000;
+  animation: fadeInUp 1s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-content h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.card-content p {
+  flex-grow: 1;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.btn-defis {
+  padding: 0.6rem 1.2rem;
+  background-color: #4e54c8;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-defis:hover {
+  background-color: #3b3f99;
+}
+
+/* Dark mode overrides for cards with image and button */
+body.dark-mode .card {
+  background: linear-gradient(to right, #2b5876, #4e4376);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .btn-defis {
+  background-color: #6a78b7;
+  color: #e0e0ff;
+}
+
+body.dark-mode .btn-defis:hover {
+  background-color: #5362a3;
+}
+
+body.dark-mode .card-content p {
+  color: #cfd9f7;
+}
+
+.card-image {
+  width: 100%;
+  height: 180px; /* fixe la hauteur */
+  object-fit: cover; /* recadre en remplissant sans déformer */
+  border-radius: 1rem 1rem 0 0; /* coins arrondis en haut seulement */
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* Styles spécifiques pour la page Règlement */
+.intro-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #4e54c8;
+  font-weight: 700;
+}
+
+.intro-section h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  color: #8f94fb;
+  padding-bottom: 0.3rem;
+}
+
+.intro-section p {
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto 1.5rem auto;
+  line-height: 1.5;
+  color: #696666;
+}
+
+.intro-section ul {
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  list-style: inside disc;
+  /* color: #222; */
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 2rem auto;
+  max-width: 700px;
+  opacity: 0.4;
+}
+
+/* Animation fadeIn pour la section */
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Ajout d’un petit effet hover sur les listes pour fun */
+.intro-section ul li:hover {
+  /* color: #4e54c8; */
+  cursor: default;
+  transition: color 0.3s ease;
+}
+
+.countdown-section {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  color: #f7d524;
+}
+
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.countdown-timer {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffd700;
+  margin-top: 0.5rem;
+}
+
