@@ -584,3 +584,79 @@ hr {
   margin-top: 0.5rem;
 }
 
+/* --- Leaderboard Firebase Custom --- */
+.glass {
+  background: rgba(24, 28, 47, 0.85);
+  backdrop-filter: blur(12px) saturate(160%);
+  border-radius: 2.5rem;
+  box-shadow: 0 8px 40px 0 rgba(0,0,0,0.4);
+  border: 1.5px solid rgba(100, 115, 255, 0.09);
+}
+.podium {
+  background: linear-gradient(90deg, rgba(34,193,195,0.12) 0%, rgba(253,187,45,0.07) 100%);
+}
+.fade-in, .fadeIn, .fadeInUp {
+  animation: fadeIn 0.9s cubic-bezier(.4,0,.2,1);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97) translateY(20px);}
+  to { opacity: 1; transform: scale(1) translateY(0);}
+}
+.admin-badge {
+  background: linear-gradient(90deg, #14b8a6, #2563eb);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 1.2rem;
+  padding: 6px 18px;
+  font-size: 1rem;
+  box-shadow: 0 0 0 2px #0e7490;
+  margin-left: 0.7rem;
+}
+.admin-btn {
+  background: rgba(16, 185, 129, 0.9);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 1.2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  box-shadow: 0 4px 16px 0 rgba(16, 185, 129, 0.14);
+  transition: background 0.2s, color 0.2s;
+}
+.admin-btn:hover {
+  background: #10b981;
+}
+.admin-icon {
+  margin-right: 5px;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+.modal {
+  transition: opacity 0.3s cubic-bezier(.4,0,.2,1), transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+.modal-enter {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+}
+.modal-open {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+}
+.animated-btn {
+  transition: transform 0.10s, box-shadow 0.10s, background 0.3s;
+}
+.animated-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.trash-hover:hover {
+  background: #b91c1c;
+  color: white !important;
+  transition: 0.2s;
+}
+.tab-btn {
+  transition: background 0.2s, color 0.2s;
+}
+.tab-btn.selected {
+  background: #0369a1;
+  color: #fff;
+}
