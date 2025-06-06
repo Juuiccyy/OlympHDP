@@ -5,333 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Scores - Olympiade du Havre de Paix</title>
   <link rel="stylesheet" href="styles.css" />
-  <!-- Pas besoin de script.js ici, tout est intégré dans le code JS plus bas -->
+  <script defer src="script.js"></script>
 </head>
-<body class="flex items-center justify-center min-h-screen px-2">
-
-  <div class="background-image"></div>
-
-  <!-- Bouton Admin en haut à droite -->
-  <div class="fixed top-4 right-4 z-50 flex items-center gap-3">
-    <button id="adminBtn" onclick="openAdminModal()" class="admin-btn shadow-lg flex items-center gap-2">
-      <span class="admin-icon">🔒</span>Connexion admin
-    </button>
-    <span id="adminBadge" class="admin-badge hidden">Admin connecté</span>
-  </div>
-
-  <div class="glass w-full max-w-4xl mx-auto p-8 fade-in mt-8">
-    <h1 class="text-4xl md:text-5xl font-extrabold text-center mb-10 text-white drop-shadow-lg tracking-wide">Olympiades du Havre de Paix</h1>
-    <div id="leaderboard" class="mb-10"></div>
-    <div id="addPlayerAdminZone" class="flex flex-col md:flex-row gap-3"></div>
-  </div>
-
-  <!-- Modals (admin, ajout joueur, édition score, suppression joueur) -->
-  <div id="adminModal" class="modal fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center z-50">
-    <div class="bg-[#17192a] rounded-2xl p-8 w-[90vw] max-w-xs glass modal-content modal-enter">
-      <h2 class="text-2xl font-bold mb-4 text-emerald-400 flex items-center gap-2">
-        <span class="admin-icon">🔒</span>Connexion administrateur
-      </h2>
-      <input id="adminCodeInput" type="password" class="w-full mb-6 p-3 rounded-lg border-none bg-[#23243b] text-white text-xl tracking-widest text-center" maxlength="4" placeholder="Code à 4 chiffres" />
-      <div class="flex gap-2 justify-end">
-        <button onclick="closeAdminModal()" class="px-5 py-2 rounded-xl bg-gray-700 hover:bg-gray-600 text-gray-300">Annuler</button>
-        <button onclick="tryLoginAdmin()" class="px-5 py-2 bg-emerald-500 text-white rounded-xl hover:bg-emerald-600 font-semibold">Connexion</button>
-      </div>
+<body>
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">Olympiade L.H.D.P</div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Accueil</a></li>
+          <li><a href="rocketleague.html" class="nav-link">Rocket League</a></li>
+          <li><a href="dayz.html" class="nav-link">DayZ</a></li>
+          <li><a href="minecraft.html" class="nav-link">Minecraft</a></li>
+          <li><a href="trackmania.html" class="nav-link">Trackmania</a></li>
+          <li><a href="scores.html" class="nav-link active">Scores</a></li>
+          <li><a href="reglement.html" class="nav-link">Réglement</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
-  <div id="addPlayerModal" class="modal fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center z-50">
-    <div class="bg-[#17192a] rounded-2xl p-8 w-[90vw] max-w-md glass modal-content modal-enter">
-      <h2 class="text-2xl font-bold mb-4 text-emerald-400">Ajouter un joueur</h2>
-      <input id="newPlayerName" class="w-full mb-4 p-3 rounded-lg border-none bg-[#23243b] text-white text-lg" placeholder="Nom du joueur" />
-      <input id="newPlayerScore" type="number" class="w-full mb-4 p-3 rounded-lg border-none bg-[#23243b] text-white text-lg" placeholder="Score initial" value="0" />
-      <div class="flex gap-2 justify-end">
-        <button onclick="closeAddPlayerModal()" class="px-5 py-2 rounded-xl bg-gray-700 hover:bg-gray-600 text-gray-300">Annuler</button>
-        <button onclick="addPlayer()" class="px-5 py-2 bg-emerald-500 text-white rounded-xl hover:bg-emerald-600 font-semibold">Ajouter</button>
+  </header>
+
+  <main class="container main-content">
+    <section class="score-section fadeInUp">
+      <h2>Tableau des scores</h2>
+      <div class="score-table">
+        <table id="scoreTable" aria-label="Tableau des scores">
+          <thead>
+            <tr>
+              <th>Jeu</th>
+              <th>Joueur</th>
+              <th>Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Scores chargés par JS -->
+          </tbody>
+        </table>
       </div>
-    </div>
-  </div>
-  <div id="editScoreModal" class="modal fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center z-50">
-    <div class="bg-[#17192a] rounded-2xl p-8 w-[90vw] max-w-md glass modal-content modal-enter">
-      <h2 class="text-2xl font-bold mb-4 text-blue-400" id="editModalTitle">Modifier le score</h2>
-      <div class="flex gap-2 mb-6">
-        <button id="tab-ajouter" onclick="switchEditMode('ajouter')" class="tab-btn px-4 py-2 rounded-xl bg-sky-900 text-sky-300 selected">Ajouter au score</button>
-        <button id="tab-ajuster" onclick="switchEditMode('ajuster')" class="tab-btn px-4 py-2 rounded-xl bg-sky-900 text-sky-300">Ajuster le score</button>
+    </section>
+
+    <section class="podium-section fadeInUp">
+      <h2>Podium des meilleurs joueurs</h2>
+      <div id="podium-cards" class="cards-grid podium-cards-grid">
+        <!-- Cartes podium chargées par JS -->
       </div>
-      <div id="addToScoreSection">
-        <label class="text-gray-300 mb-1 block" for="addScoreInput">Nombre de points à ajouter</label>
-        <input id="addScoreInput" type="number" class="w-full mb-4 p-3 rounded-lg border-none bg-[#23243b] text-white text-lg" value="0" />
-        <div class="flex gap-2">
-          <button onclick="changeAddScore(-1)" class="animated-btn px-3 py-2 bg-gray-700 text-white rounded-xl hover:bg-gray-600 text-xl">-1</button>
-          <button onclick="changeAddScore(1)" class="animated-btn px-3 py-2 bg-gray-700 text-white rounded-xl hover:bg-gray-600 text-xl">+1</button>
-        </div>
-      </div>
-      <div id="setScoreSection" style="display:none;">
-        <label class="text-gray-300 mb-1 block" for="editScoreInput">Nouveau score total</label>
-        <input id="editScoreInput" type="number" class="w-full mb-4 p-3 rounded-lg border-none bg-[#23243b] text-white text-lg" value="0" />
-      </div>
-      <div class="flex gap-2 justify-end">
-        <button onclick="closeEditScoreModal()" class="px-5 py-2 rounded-xl bg-gray-700 hover:bg-gray-600 text-gray-300">Annuler</button>
-        <button onclick="saveEditScore()" class="px-5 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600 font-semibold">Valider</button>
-      </div>
-    </div>
-  </div>
-  <div id="deletePlayerModal" class="modal fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center z-50">
-    <div class="bg-[#17192a] rounded-2xl p-8 w-[90vw] max-w-md glass modal-content modal-enter">
-      <h2 class="text-2xl font-bold mb-4 text-red-400">Supprimer le joueur</h2>
-      <p class="text-white text-lg mb-6" id="deletePlayerName">Êtes-vous sûr de vouloir supprimer ce joueur&nbsp;?</p>
-      <div class="flex gap-2 justify-end">
-        <button onclick="closeDeletePlayerModal()" class="px-5 py-2 rounded-xl bg-gray-700 hover:bg-gray-600 text-gray-300">Annuler</button>
-        <button onclick="deletePlayerConfirm()" class="px-5 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 font-semibold">Supprimer</button>
-      </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <!-- Firebase & Leaderboard Script -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-  <script>
-    // Config Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyAqUwG1JiprI7lKTuIggnHN5L5GYXHHQh0",
-      authDomain: "olympiades-hdp.firebaseapp.com",
-      projectId: "olympiades-hdp",
-      storageBucket: "olympiades-hdp.appspot.com",
-      messagingSenderId: "707224340568",
-      appId: "1:707224340568:web:5395f8d0c8ae48404ea22d"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-    const PLAYERS_DB_PATH = "leaderboard/players";
-    let players = [];
-    let editIndex = null;
-    let deleteIndex = null;
-    let editMode = 'ajouter'; // 'ajouter' ou 'ajuster'
-    let isAdmin = false;
-
-    function listenForPlayers() {
-      db.ref(PLAYERS_DB_PATH).on('value', (snapshot) => {
-        const data = snapshot.val();
-        players = [];
-        if (data) Object.values(data).forEach(player => players.push(player));
-        renderLeaderboard();
-      });
-    }
-    function initDefaultPlayersIfNeeded() {
-      db.ref(PLAYERS_DB_PATH).once('value', (snapshot) => {
-        if (!snapshot.exists()) {
-          const defaultPlayers = [
-            { name: "GigZ", score: 0 },
-            { name: "Juuicyy", score: 0 },
-            { name: "Mathilde", score: 0 },
-            { name: "Carotte", score: 0 },
-            { name: "Mimi", score: 0 },
-            { name: "Psylo", score: 0 },
-            { name: "Pwouah", score: 0 }
-          ];
-          let updates = {};
-          defaultPlayers.forEach((player, i) => {
-            const id = db.ref().push().key;
-            updates[id] = { ...player, id };
-          });
-          db.ref(PLAYERS_DB_PATH).set(updates);
-        }
-      });
-    }
-    function renderLeaderboard() {
-      players.sort((a, b) => b.score - a.score);
-      const medals = ['🥇', '🥈', '🥉'];
-      let html = `
-        <div class="overflow-hidden rounded-3xl shadow-xl bg-white/5 backdrop-blur-md">
-          <table class="min-w-full">
-            <thead>
-              <tr class="bg-[#23243b] text-emerald-300 text-xl font-bold">
-                <th class="px-4 py-4">#</th>
-                <th class="px-4 py-4 text-left">Nom</th>
-                <th class="px-4 py-4">Score</th>
-                <th class="px-4 py-4 text-right"></th>
-              </tr>
-            </thead>
-            <tbody>
-      `;
-      players.forEach((p, i) => {
-        let rowClass = i < 3 ? "podium font-bold text-lg" : "";
-        let medal = medals[i] || '';
-        html += `
-          <tr class="hover:bg-[#1f2238] transition ${rowClass}">
-            <td class="text-center text-3xl">${medal || (i+1)}</td>
-            <td class="px-4 py-4">${p.name}</td>
-            <td class="px-4 py-4 text-center">${p.score}</td>
-            <td class="px-2 text-right flex gap-2 justify-end items-center">
-              ${
-                isAdmin
-                ? `<button onclick="openEditScoreModal(${i})" class="animated-btn px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl shadow-md font-semibold text-lg transition duration-200">
-                      Ajuster
-                    </button>
-                    <button onclick="openDeletePlayerModal(${i})" title="Supprimer" class="animated-btn trash-hover p-2 rounded-xl text-red-500 text-2xl flex items-center justify-center transition duration-150">
-                      🗑️
-                    </button>`
-                : ''
-              }
-            </td>
-          </tr>
-        `;
-      });
-      html += `
-            </tbody>
-          </table>
-        </div>
-      `;
-      document.getElementById('leaderboard').innerHTML = html;
-      document.getElementById('addPlayerAdminZone').innerHTML = isAdmin
-        ? `<button onclick="openAddPlayerModal()" class="animated-btn px-6 py-3 bg-emerald-600 text-white rounded-2xl shadow-lg font-bold text-lg hover:bg-emerald-700 w-full md:w-auto">+ Ajouter un joueur</button>`
-        : '';
-    }
-
-    // Gestion admin
-    function openAdminModal() {
-      const modal = document.getElementById('adminModal');
-      modal.classList.remove('hidden');
-      setTimeout(() => {
-        modal.querySelector('.modal-content').classList.add('modal-open');
-      }, 10);
-      document.getElementById('adminCodeInput').value = '';
-    }
-    function closeAdminModal() {
-      const modal = document.getElementById('adminModal');
-      modal.querySelector('.modal-content').classList.remove('modal-open');
-      setTimeout(() => { modal.classList.add('hidden'); }, 250);
-    }
-    function tryLoginAdmin() {
-      const val = document.getElementById('adminCodeInput').value.trim();
-      if(val === "2332") {
-        isAdmin = true;
-        closeAdminModal();
-        document.getElementById('adminBtn').classList.add('hidden');
-        document.getElementById('adminBadge').classList.remove('hidden');
-        renderLeaderboard();
-      } else {
-        alert("Code incorrect !");
-      }
-    }
-
-    // Modal Ajout joueur
-    function openAddPlayerModal() {
-      const modal = document.getElementById('addPlayerModal');
-      modal.classList.remove('hidden');
-      setTimeout(() => {
-        modal.querySelector('.modal-content').classList.add('modal-open');
-      }, 10);
-      document.getElementById('newPlayerName').value = '';
-      document.getElementById('newPlayerScore').value = 0;
-    }
-    function closeAddPlayerModal() {
-      const modal = document.getElementById('addPlayerModal');
-      modal.querySelector('.modal-content').classList.remove('modal-open');
-      setTimeout(() => { modal.classList.add('hidden'); }, 250);
-    }
-    function addPlayer() {
-      const name = document.getElementById('newPlayerName').value.trim();
-      let score = parseInt(document.getElementById('newPlayerScore').value, 10);
-      if (!name) return alert("Nom requis");
-      if (isNaN(score)) score = 0;
-      const id = db.ref().push().key;
-      db.ref(`${PLAYERS_DB_PATH}/${id}`).set({ name, score, id });
-      closeAddPlayerModal();
-    }
-
-    // Modal Edit score amélioré avec switch entre "ajouter" et "ajuster"
-    function openEditScoreModal(index) {
-      editIndex = index;
-      editMode = 'ajouter'; // Par défaut
-      const modal = document.getElementById('editScoreModal');
-      modal.classList.remove('hidden');
-      setTimeout(() => {
-        modal.querySelector('.modal-content').classList.add('modal-open');
-      }, 10);
-      document.getElementById('editModalTitle').textContent = "Score de " + players[index].name;
-      document.getElementById('addScoreInput').value = 0;
-      document.getElementById('editScoreInput').value = players[index].score;
-      switchEditMode('ajouter');
-    }
-    function closeEditScoreModal() {
-      const modal = document.getElementById('editScoreModal');
-      modal.querySelector('.modal-content').classList.remove('modal-open');
-      setTimeout(() => { modal.classList.add('hidden'); }, 250);
-    }
-    function switchEditMode(mode) {
-      editMode = mode;
-      document.getElementById('tab-ajouter').classList.remove('selected');
-      document.getElementById('tab-ajuster').classList.remove('selected');
-      if(mode === 'ajouter') {
-        document.getElementById('addToScoreSection').style.display = '';
-        document.getElementById('setScoreSection').style.display = 'none';
-        document.getElementById('tab-ajouter').classList.add('selected');
-      } else {
-        document.getElementById('addToScoreSection').style.display = 'none';
-        document.getElementById('setScoreSection').style.display = '';
-        document.getElementById('tab-ajuster').classList.add('selected');
-      }
-    }
-    function changeAddScore(delta) {
-      let input = document.getElementById('addScoreInput');
-      let val = parseInt(input.value, 10);
-      if (isNaN(val)) val = 0;
-      input.value = val + delta;
-    }
-    function saveEditScore() {
-      if(editIndex !== null) {
-        const player = players[editIndex];
-        if(editMode === 'ajouter') {
-          let toAdd = parseInt(document.getElementById('addScoreInput').value, 10);
-          if(isNaN(toAdd)) toAdd = 0;
-          db.ref(`${PLAYERS_DB_PATH}/${player.id}/score`).set(player.score + toAdd);
-        } else {
-          let newScore = parseInt(document.getElementById('editScoreInput').value, 10);
-          if(isNaN(newScore)) newScore = 0;
-          db.ref(`${PLAYERS_DB_PATH}/${player.id}/score`).set(newScore);
-        }
-        closeEditScoreModal();
-      }
-    }
-
-    // Modal Suppression joueur
-    function openDeletePlayerModal(index) {
-      deleteIndex = index;
-      const modal = document.getElementById('deletePlayerModal');
-      modal.classList.remove('hidden');
-      setTimeout(() => {
-        modal.querySelector('.modal-content').classList.add('modal-open');
-      }, 10);
-      document.getElementById('deletePlayerName').textContent =
-        `Êtes-vous sûr de vouloir supprimer le joueur « ${players[index].name} » ?`;
-    }
-    function closeDeletePlayerModal() {
-      const modal = document.getElementById('deletePlayerModal');
-      modal.querySelector('.modal-content').classList.remove('modal-open');
-      setTimeout(() => { modal.classList.add('hidden'); }, 250);
-    }
-    function deletePlayerConfirm() {
-      if (deleteIndex !== null && players[deleteIndex]) {
-        db.ref(`${PLAYERS_DB_PATH}/${players[deleteIndex].id}`).remove();
-        closeDeletePlayerModal();
-      }
-    }
-
-    // Fermer les modals en cliquant à l’extérieur
-    window.onclick = function(event) {
-      ['adminModal','addPlayerModal','editScoreModal','deletePlayerModal'].forEach(id=>{
-        const modal=document.getElementById(id);
-        if (!modal.classList.contains('hidden') && event.target === modal) {
-          modal.querySelector('.modal-content').classList.remove('modal-open');
-          setTimeout(() => { modal.classList.add('hidden'); }, 250);
-        }
-      });
-    }
-
-    // Initialisation
-    window.onload = function() {
-      initDefaultPlayersIfNeeded();
-      listenForPlayers();
-    };
-  </script>
+  <footer>
+    <p>&copy; 2025 Olympiade du Havre de Paix. Tous droits réservés.</p>
+  </footer>
 </body>
 </html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olympiade L.H.D.P</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="background-image"></div>
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">Olympiade L.H.D.P</div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link active">Accueil</a></li>
+          <li><a href="rocketleague.html" class="nav-link">Rocket League</a></li>
+          <li><a href="dayz.html" class="nav-link">DayZ</a></li>
+          <li><a href="minecraft.html" class="nav-link">Minecraft</a></li>
+          <li><a href="trackmania.html" class="nav-link">Trackmania</a></li>
+          <li><a href="scores.html" class="nav-link">Scores</a></li>
+          <li><a href="reglement.html" class="nav-link">Réglement</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <section class="intro-section fadeIn">
+      <h2>Bienvenue aux Olympiades</h2>
+      <p>
+        Rejoignez-nous dans une compétition palpitante sur vos jeux favoris : Rocket League, DayZ, Minecraft et Trackmania.
+        Participez à des défis uniques et grimpez dans le classement !
+      </p>
+    </section>
+
+    <section class="countdown-section fadeIn">
+      <h2>⏳ Début de la prochaine épreuve</h2>
+      <div class="countdown-grid">
+        <div class="countdown-box">
+          <h3>🇫🇷 France</h3>
+          <p id="fr-start-time"></p>
+          <p id="countdown-fr" class="countdown-value"></p>
+        </div>
+        <div class="countdown-box">
+          <h3>🇨🇦 Québec</h3>
+          <p id="ca-start-time"></p>
+          <p id="countdown-ca" class="countdown-value"></p>
+        </div>
+      </div>
+
+      <!-- Tu définis ici une seule date UTC pour les deux -->
+      <div id="countdown-data" data-target="2025-06-09T01:00:00Z" data-title="Début de l'épreuve"></div>
+    </section>
+
+
+
+    <section class="cards-grid">
+      <div class="card">
+        <img src="images/rocketleague.jpg" alt="Rocket League" class="card-image" />
+        <div class="card-content">
+          <h3>Rocket League</h3>
+          <p>Des défis aériens et stratégiques pour les fans de Rocket League.</p>
+          <button class="btn-defis" onclick="location.href='rocketleague.html'">Voir les défis</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/dayz.jpg" alt="DayZ" class="card-image" />
+        <div class="card-content">
+          <h3>DayZ</h3>
+          <p>Survivre et dominer avec nos challenges DayZ.</p>
+          <button class="btn-defis" onclick="location.href='dayz.html'">Voir les défis</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/minecraft.jpg" alt="Minecraft" class="card-image" />
+        <div class="card-content">
+          <h3>Minecraft</h3>
+          <p>Construis et explore avec ces défis Minecraft uniques.</p>
+          <button class="btn-defis" onclick="location.href='minecraft.html'">Voir les défis</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/trackmania.jpg" alt="Trackmania" class="card-image" />
+        <div class="card-content">
+          <h3>Trackmania</h3>
+          <p>Prends le volant et bats des records dans Trackmania.</p>
+          <button class="btn-defis" onclick="location.href='trackmania.html'">Voir les défis</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="podium-section">
+      <h2>Podium des meilleurs joueurs</h2>
+      <div id="podium-cards" class="cards-grid">
+        <!-- Les cartes podium seront insérées ici par JS -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Olympiade du Havre de Paix. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
+
