@@ -1,3 +1,6 @@
+// Vide le localStorage à chaque arrivée sur une page
+localStorage.clear();
+
 // script.js
 
 window.addEventListener("DOMContentLoaded", () => {
