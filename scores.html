@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scores - Olympiade du Havre de Paix</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">Olympiade L.H.D.P</div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Accueil</a></li>
+          <li><a href="rocketleague.html" class="nav-link">Rocket League</a></li>
+          <li><a href="dayz.html" class="nav-link">DayZ</a></li>
+          <li><a href="minecraft.html" class="nav-link">Minecraft</a></li>
+          <li><a href="trackmania.html" class="nav-link">Trackmania</a></li>
+          <li><a href="scores.html" class="nav-link active">Scores</a></li>
+          <li><a href="reglement.html" class="nav-link">Réglement</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <section class="score-section fadeInUp">
+      <h2>Tableau des scores</h2>
+      <div class="score-table">
+        <table id="scoreTable" aria-label="Tableau des scores">
+          <thead>
+            <tr>
+              <th>Jeu</th>
+              <th>Joueur</th>
+              <th>Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Scores chargés par JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="podium-section fadeInUp">
+      <h2>Podium des meilleurs joueurs</h2>
+      <div id="podium-cards" class="cards-grid podium-cards-grid">
+        <!-- Cartes podium chargées par JS -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Olympiade du Havre de Paix. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
