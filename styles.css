@@ -299,7 +299,8 @@ body.dark-mode .nav-link:hover {
 }
 
 body.dark-mode .card {
-  background: linear-gradient(to right, #2b5876, #4e4376);
+  background: rgba(24, 28, 47, 0.85);
+  backdrop-filter: blur(12px) saturate(160%);
   color: #fff;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
